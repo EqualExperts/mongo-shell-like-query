@@ -23,7 +23,7 @@ class MongoQueryParser {
 
   private val collectionNamePattern = "db\\.(.*?)(?:\\.find\\(.*?\\))?(?:\\.aggregate\\(.*?\\))?".r
 
-  def parse(queryString: String, queryParameters: java.util.Map[String, String]): MongoQuery = {
+  def parse(queryString: java.lang.String, queryParameters: java.util.HashMap[java.lang.String, java.lang.String]): MongoQuery = {
     parse(queryString, queryParameters.toMap)
   }
 
