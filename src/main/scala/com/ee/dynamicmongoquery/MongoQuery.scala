@@ -7,10 +7,14 @@ import scala.collection.JavaConverters._
 import scala.Array
 import java.util
 
-class MongoQuery(val queryTypes: List[Query],val collectionName: String) {
+class MongoQuery(val queryTypes: List[Query], val collectionName: String) {
 
-  def execute(spectacleDB: MongoDB): BasicDBList = {
-    val collection: DBCollection = spectacleDB.getCollection(collectionName)
+  def execute(db: com.mongodb.DB): BasicDBList = {
+    execute(new MongoDB(db))
+  }
+
+  def execute(db: MongoDB): BasicDBList = {
+    val collection: DBCollection = db.getCollection(collectionName)
 
     val results = queryTypes.head match {
       case findQuery: FindQuery => {
@@ -64,8 +68,8 @@ class MongoQuery(val queryTypes: List[Query],val collectionName: String) {
   override def equals(that: Any): Boolean = {
     that match {
       case that: MongoQuery => {
-        this.collectionName == that.collectionName    &&
-        this.queryTypes == that.queryTypes
+        this.collectionName == that.collectionName &&
+          this.queryTypes == that.queryTypes
       }
       case _ => false
     }

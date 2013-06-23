@@ -1,5 +1,6 @@
 package com.ee.dynamicmongoquery
 
+import scala.collection.JavaConversions._
 
 class MongoQueryParser {
 
@@ -22,13 +23,16 @@ class MongoQueryParser {
 
   private val collectionNamePattern = "db\\.(.*?)(?:\\.find\\(.*?\\))?(?:\\.aggregate\\(.*?\\))?".r
 
+  def parse(queryString: String, queryParameters: java.util.Map[String, String]): MongoQuery = {
+    parse(queryString, queryParameters.toMap)
+  }
 
   def parse(queryString: String, queryParameters: Map[String, String]): MongoQuery = {
     val placeholderLookup: PlaceholderLookup = new PlaceholderLookup(queryParameters)
 
     val formattedQueryString = new MongoQueryCleanser().clean(queryString)
 
-    println("formatted query: "+formattedQueryString)
+    println("formatted query: " + formattedQueryString)
 
     val findQueries: List[Query] = findPattern.findAllIn(formattedQueryString).toList.map(q => {
       val findContentPattern(findQueryString) = q;
