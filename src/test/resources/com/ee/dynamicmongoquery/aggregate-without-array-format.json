@@ -1,0 +1,1 @@
+{"query":"db.users.aggregate({'$match':{'salary' : {$gte:'from#Long',$lte:'to#Long'}}}, { $group: {_id:'$role', 'age': {$sum:  '$age' }  }  }, {  '$sort': {  'age': -1 } },   {  '$limit': 5 })"}

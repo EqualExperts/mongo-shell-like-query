@@ -1,0 +1,3 @@
+{
+    "query":"db.users.find({'salary' : { '$in' : '[1000,5000]'}})"
+}

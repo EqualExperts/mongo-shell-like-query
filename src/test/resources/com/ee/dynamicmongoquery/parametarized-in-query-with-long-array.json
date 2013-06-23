@@ -1,0 +1,3 @@
+{
+    "query" : "db.users.find({'salary':{'$in':'[salary#Long]'},'age':{'$gte':'from#Long','$lt':'to#Long'}})"
+}

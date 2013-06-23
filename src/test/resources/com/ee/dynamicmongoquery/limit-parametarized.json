@@ -1,0 +1,3 @@
+{
+    "query" :"db.users.find().skip('skip').limit('limit#Integer')"
+}

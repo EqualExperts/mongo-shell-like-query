@@ -1,0 +1,3 @@
+{
+    "query":"db.users.find({'weight' : { '$in' : '[30.5, 53.0]'}})"
+}

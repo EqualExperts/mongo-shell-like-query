@@ -1,0 +1,3 @@
+{
+    "query":"db.users.find({'salary' : 'salary#Long', 'weight': 'wt#Double', 'isConsultant': 'consultant#Boolean', 'name': 'name#String'})"
+}

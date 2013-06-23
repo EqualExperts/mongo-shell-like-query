@@ -1,0 +1,3 @@
+{
+    "query":"db.users.find({'role' : 'manager'},{'name' : 1})"
+}

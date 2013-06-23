@@ -1,0 +1,3 @@
+{
+    "query":"db.users.find({'address.city' : 'pune'})"
+}
