@@ -17,14 +17,12 @@ BaiscDBList results = mongoQuery.execute(mongoDB);
 Features
 ========
 
-1. It supports all kinds of read queries (both find as well as aggregation) using various operators
-
-2. It supports query chaining (chain the use of sort, skip, and limit in any order)
-
-3. It tolerates whitespace as: ”db.users.find( { ‘name’ : ‘John’} )” is of course, the same as 
+# It supports all kinds of read queries (both find as well as aggregation) using various operators
+# It supports query chaining (chain the use of sort, skip, and limit in any order)
+# It tolerates whitespace as: ”db.users.find( { ‘name’ : ‘John’} )” is of course, the same as 
    ”db   .   users  .  find  (  {   ‘name’   :   ‘John’   }   )”
 
-4. It supports parameterized queries, wherein values can be specified at runtime
+# It supports parameterized queries, wherein values can be specified at runtime
 
        String query = ”db.users.find( { ‘name’ : ‘givenName’} )”
        Map[String,String]  params= new HashMap()
@@ -34,7 +32,7 @@ Features
        MongoQuery mongoQuery = parser.parse(query, params);
        BaiscDBList results = mongoQuery.execute(mongoDB);
 
-5. It supports parameterized queries with strongly typed data (Most of BSON types are supported)
+# It supports parameterized queries with strongly typed data (Most BSON types are supported)
 
        String query = ”db.users.find( { salary : ‘sal#Long’} )” 
        Map[String,String]  params= new HashMap()
@@ -48,16 +46,19 @@ Features
        ParameterName#DataType (supported datatypes are String|Boolean|Integer|Double|ObjectId)
 
        For more examples checkout ‘src/test/resources’ folder and MongoQueryIntegrationTest
-       (https://github.com/leenabora/mongo-shell-like-query)
 
-6.  It supports both scala and java api 
+#  It supports both scala and java api 
 
 
 Usage
 =====
 
-1. Add dependency for mongo-shell-like-queries in your project
-   a) maven dependacy
+# Add dependency for mongo-shell-like-queries in your project
+
+   a) Add maven dependency
+
+   <pre>
+
     <dependencies>
         <dependency>
             <groupId>com.ee.mongo.util</groupId>
@@ -77,11 +78,12 @@ Usage
         </repository>
     </repositories>
 
-   
+  </pre> 
 
+# Use library:
 
-2. Use library:
    a) Java API
+
         String query = "db.users.find( { 'role' : 'manager'} )";
         DB mongoDB = new MongoClient().getDB("your-db-name");
 
@@ -90,7 +92,7 @@ Usage
         System.out.println(results.size());
 
    b) Scala API
-      val query = "db.users.find( { 'role' : 'manager'} )";
+      val query = "db.users.find( { 'role' : 'manager'} )"
       val mongoConn = MongoConnection()
       val mongoDB = mongoConn("your-db-name")
   
@@ -98,5 +100,4 @@ Usage
       val results = mongoQuery.execute(mongoDB)
       println(results.size)
   
- 
- 
+END-OF-FILE 
