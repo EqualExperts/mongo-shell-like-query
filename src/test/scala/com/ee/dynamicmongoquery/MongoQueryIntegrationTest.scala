@@ -6,9 +6,9 @@ import org.specs2.runner.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class MongoQueryIntegrationTest extends IntegrationTest {
 
-  "find queries" should {
+  "find queries" >> {
 
-    "simple find query with no criteria and no projection" in {
+    "simple find query with no criteria and no projection should return matching results" >> {
       //Given
       val query: String = getMongoQuery("find-wo-criteria")
 
@@ -20,7 +20,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertResultSize(results, 6)
     }
 
-    "find query with criteria and projection" in {
+    "find query with criteria and projection should return matching results" >> {
 
       //Given
       val query: String = getMongoQuery("find-with-criteria-projection")
@@ -37,7 +37,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertKeyNameForFirstDocument(results, "name")
     }
 
-    "parametarized find query" in {
+    "parametarized find query should return matching results" >> {
       //Given
       val query: String = getMongoQuery("find-parametarized")
       val params = parameters("salary" -> "1000", "name" -> "leena", "consultant" -> "true", "wt" -> "30.5")
@@ -53,7 +53,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
     }
 
 
-    "find query with nested criteria property" in {
+    "find query with nested criteria property should return matching results" >> {
       //Given
       val query: String = getMongoQuery("nested-query")
 
@@ -67,7 +67,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
     }
 
 
-    "find query with multiple sort and limit" in {
+    "find query with multiple sort and limit should return matching results" >> {
       //Given
       val query: String = getMongoQuery("sort-limit-chaining")
 
@@ -82,7 +82,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertNameForSecondDocument(results, "rian")
     }
 
-    "find query with multiple sort and skip chaining" in {
+    "find query with multiple sort and skip chaining should return matching results" >> {
       //Given
       val query: String = getMongoQuery("sort-skip-chaining")
 
@@ -96,7 +96,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertNameForSecondDocument(results, "vina")
     }
 
-    "find query without criteria and with skip and limit chaining" in {
+    "find query without criteria and with skip and limit chaining should return matching results" >> {
       //Given
       val query: String = getMongoQuery("find-wo-criteria-skip-limit")
 
@@ -109,7 +109,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertNameForFirstDocument(results, "tina")
     }
 
-    "find query with parametarized limit" in {
+    "find query with parametarized limit query should return matching results" >> {
       //Given
       val query: String = getMongoQuery("limit-parametarized")
       val params = parameters("skip" -> "2", "limit" -> "1")
@@ -123,7 +123,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertNameForFirstDocument(results, "tina")
     }
 
-    "find query with no results" in {
+    "find query with no-results should not return any results" >> {
       //Given
       val query: String = getMongoQuery("no-result-found")
 
@@ -135,7 +135,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertResultSize(results, 0)
     }
 
-    "unformatted find query" in {
+    "unformatted find query should return matching results" >> {
       //Given
       val query: String = getMongoQuery("unformatted-find-query")
 
@@ -152,9 +152,9 @@ class MongoQueryIntegrationTest extends IntegrationTest {
 
   }
 
-  "aggregate queries" should {
+  "aggregate queries" >> {
 
-    "aggregate query specified in array format (using $match,$lte,$gthe,$group,$sum,$sort and $limit operator)" >> {
+    "aggregate query specified in array format (using $match,$lte,$gthe,$group,$sum,$sort and $limit operator) should return matching results" >> {
       //Given
       val query: String = getMongoQuery("aggregate-with-array-format")
       val params = parameters("from" -> "1000", "to" -> "5000")
@@ -170,7 +170,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertAgeForThirdDocument(results, 30)
     }
 
-    "aggregate query without array format (using $match,$lte,$gthe,$group,$sum,$sort and $limit operator)" in {
+    "aggregate query without array format (using $match,$lte,$gthe,$group,$sum,$sort and $limit operator) should return matching results" >> {
       //Given
       val query: String = getMongoQuery("aggregate-without-array-format")
       val params = parameters("from" -> "1000", "to" -> "5000")
@@ -186,7 +186,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertAgeForThirdDocument(results, 30)
     }
 
-    "unformatted aggregate query" in {
+    "unformatted aggregate query should return matching results" >> {
       //Given
       val query: String = getMongoQuery("unformatted-aggregate-query")
       val params = parameters("from" -> "1000", "to" -> "5000")
@@ -203,9 +203,9 @@ class MongoQueryIntegrationTest extends IntegrationTest {
     }
   }
 
-  "in queries" should {
+  "in queries" >> {
 
-    "parametarized in query with array of long values" in {
+    "parametarized in-query with array of long values should return matching results" >> {
       //Given
       val query: String = getMongoQuery("parametarized-in-query-with-long-array")
       val params = parameters("from" -> "30", "to" -> "45", "salary" -> "1000,5000")
@@ -219,7 +219,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertNameForFirstDocument(results, "leena")
     }
 
-    "parametarized in query with array of string values" in {
+    "parametarized in-query with array of string values should return matching results" >> {
       //Given
       val query: String = getMongoQuery("parametarized-in-query-with-string-array")
       val params = parameters("name" -> "leena,tina")
@@ -234,7 +234,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertNameForSecondDocument(results, "tina")
     }
 
-    "in query with hardcoded boolean array" in {
+    "in-query with hardcoded boolean array should return matching results" >> {
       //Given
       val query: String = getMongoQuery("in-with-hardcoded-boolean-array")
 
@@ -249,7 +249,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertNameForThirdDocument(results, "rina")
     }
 
-    "in query with hardcoded double array" in {
+    "in-query with hardcoded double array should return matching results" >> {
       //Given
       val query: String = getMongoQuery("in-with-hardcoded-double-array")
 
@@ -263,7 +263,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertNameForSecondDocument(results, "rina")
     }
 
-    "in query with hardcoded long array" in {
+    "in-query with hardcoded long array should return matching results" >> {
       //Given
       val query: String = getMongoQuery("in-with-hardcoded-long-array")
 
@@ -277,7 +277,7 @@ class MongoQueryIntegrationTest extends IntegrationTest {
       assertNameForSecondDocument(results, "vina")
     }
 
-    "in query with hardcoded string array where each value of array is in double-quote" in {
+    "in-query with hardcoded string array where each value of array is in double-quote should return matching results" >> {
       //Given
       val query: String = getMongoQuery("in-with-hardcoded-string-array-double-quote")
 
