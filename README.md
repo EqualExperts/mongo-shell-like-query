@@ -1,24 +1,31 @@
                                               mongo-shell-like-query
                                               ======================
 
+
                                 Executing mongo-shell-like-query with mongo Java driver
 
 Describe your read queries the same as you do on the mongo client shell, and the library runs it, for both regular queries as well as use of the Mongo aggregation facility
 
+
 Example
 ========
+
 
 String query = ”db.users.find( { ‘name’ : ‘John’} )”;
 
 MongoQueryParser parser = new MongoQueryParser();
 MongoQuery mongoQuery = parser.parse(query, new HashMap());
-BaiscDBList results = mongoQuery.execute(mongoDB);
+BasicDBList results = mongoQuery.execute(mongoDB);
+
 
 Features
 ========
 
+
 # It supports all kinds of read queries (both find as well as aggregation) using various operators
+
 # It supports query chaining (chain the use of sort, skip, and limit in any order)
+
 # It tolerates whitespace as: ”db.users.find( { ‘name’ : ‘John’} )” is of course, the same as 
    ”db   .   users  .  find  (  {   ‘name’   :   ‘John’   }   )”
 
@@ -52,6 +59,7 @@ Features
 
 Usage
 =====
+
 
 # Add dependency for mongo-shell-like-queries in your project
 
