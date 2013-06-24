@@ -14,19 +14,24 @@ class MongoQuery(val queryTypes: List[Query], val collectionName: String) {
   }
 
   def execute(db: MongoDB): BasicDBList = {
-    val collection: DBCollection = db.getCollection(collectionName)
+    try {
+      val collection: DBCollection = db.getCollection(collectionName)
 
-    val results = queryTypes.head match {
-      case findQuery: FindQuery => {
-        val cursor = executeQuery(queryTypes, collection, null)
-        convertToBasicDBList(cursor)
+      val results = queryTypes.head match {
+        case findQuery: FindQuery => {
+          val cursor = executeQuery(queryTypes, collection, null)
+          convertToBasicDBList(cursor)
+        }
+        case aggregateQuery: AggregateQuery => {
+          val resultArray = executeAggregate(aggregateQuery, collection)
+          convertArrayToBasicDBList(resultArray)
+        }
+
       }
-      case aggregateQuery: AggregateQuery => {
-        val resultArray = executeAggregate(aggregateQuery, collection)
-        convertArrayToBasicDBList(resultArray)
-      }
+      results
+    } catch {
+      case ex: Exception => throw new RuntimeException("invalid query", ex)
     }
-    results
   }
 
   protected def executeQuery(queryTypes: List[Query], collection: DBCollection, dbCursor: DBCursor): DBCursor = {
