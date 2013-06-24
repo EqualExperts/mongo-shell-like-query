@@ -66,7 +66,8 @@ class MongoQueryParser {
 
       val collectionNamePattern(collectionName) = formattedQueryString
       val queryParts: List[Query] = findQueries ::: plainFindQueries ::: sortQueries ::: skipQueries ::: limitQueries ::: aggregationQueries
-      new MongoQuery(queryParts, collectionName)
+      if (!queryParts.isEmpty) new MongoQuery(queryParts, collectionName) else throw new RuntimeException("invalid query")
+
     } catch {
       case ex: Exception => throw new RuntimeException("invalid query", ex)
     }
