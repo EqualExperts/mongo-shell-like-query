@@ -26,11 +26,10 @@ class MongoQuery(val queryTypes: List[Query], val collectionName: String) {
           val resultArray = executeAggregate(aggregateQuery, collection)
           convertArrayToBasicDBList(resultArray)
         }
-
       }
       results
     } catch {
-      case ex: Exception => throw new RuntimeException("invalid query", ex)
+      case ex: Exception => throw new RuntimeException("query execution failed, it could be because of invalid query or see detail stacktrace for exact cause", ex)
     }
   }
 
