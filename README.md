@@ -22,14 +22,14 @@ Features
 ========
 
 
-# It supports all kinds of read queries (both find as well as aggregation) using various operators
+* It supports all kinds of read queries (both find as well as aggregation) using various operators
 
-# It supports query chaining (chain the use of sort, skip, and limit in any order)
+* It supports query chaining (chain the use of sort, skip, and limit in any order)
 
-# It tolerates whitespace as: ”db.users.find( { ‘name’ : ‘John’} )” is of course, the same as 
+* It tolerates whitespace as: ”db.users.find( { ‘name’ : ‘John’} )” is of course, the same as 
    ”db   .   users  .  find  (  {   ‘name’   :   ‘John’   }   )”
 
-# It supports parameterized queries, wherein values can be specified at runtime
+* It supports parameterized queries, wherein values can be specified at runtime
 
        String query = ”db.users.find( { ‘name’ : ‘givenName’} )”
        Map[String,String]  params= new HashMap()
@@ -39,7 +39,7 @@ Features
        MongoQuery mongoQuery = parser.parse(query, params);
        BaiscDBList results = mongoQuery.execute(mongoDB);
 
-# It supports parameterized queries with strongly typed data (Most BSON types are supported)
+* It supports parameterized queries with strongly typed data (Most BSON types are supported)
 
        String query = ”db.users.find( { salary : ‘sal#Long’} )” 
        Map[String,String]  params= new HashMap()
@@ -54,14 +54,14 @@ Features
 
        For more examples checkout ‘src/test/resources’ folder and MongoQueryIntegrationTest
 
-#  It supports both scala and java api 
+*  It supports both scala and java api 
 
 
 Usage
 =====
 
 
-# Add dependency for mongo-shell-like-queries in your project
+* Add dependency for mongo-shell-like-queries in your project
 
    a) Add maven dependency
 
@@ -88,7 +88,7 @@ Usage
 
   </pre> 
 
-# Use library:
+* Use library:
 
    a) Java API
 
