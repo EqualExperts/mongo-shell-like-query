@@ -1,0 +1,30 @@
+mongo-shell-like-query:
+Describe your queries for MongoDB the same as you do on the mongo client shell, and this library runs them for you
+
+Copyright (C) 2014, Equal Experts India Pvt Ltd. (http://equalexperts.com)
+
+Authors:
+1. Chinmay Naik, cnaik [AT] equalexperts [DOT] com
+2. Leena Bora, lbora [AT] equalexperts [DOT] com
+3. Mrugen Deshmukh, mrugen [AT] equalexperts [DOT] com
+4. Krishnan Mani, kmani [AT] equalexperts [DOT] com
+
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+A copy of the GNU Affero General Public License is in License.txt
+Also, see http://www.gnu.org/licenses/
+
+This product includes the use of other software as follows:
+We reference the Scala and Java drivers for the MongoDB database.
+These are, in turn, available under an open source license (Apache License, Version 2.0, etc.)
+
+END-OF-FILE
