@@ -6,7 +6,7 @@
 
     <groupId>com.ee.mongo.util</groupId>
     <artifactId>mongo-shell-like-query</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <scala.version>2.10.2</scala.version>
