@@ -10,18 +10,17 @@ Authors:
 4. Krishnan Mani, kmani [AT] equalexperts [DOT] com
 
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+A copy of the License is in License.txt and you may also obtain a copy at
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
+    http://www.apache.org/licenses/LICENSE-2.0
 
-A copy of the GNU Affero General Public License is in License.txt
-Also, see http://www.gnu.org/licenses/
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 This product includes the use of other software as follows:
 We reference the Scala and Java drivers for the MongoDB database.
