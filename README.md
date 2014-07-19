@@ -6,6 +6,8 @@
 
 Describe your read queries the same as you do on the mongo client shell, and the library runs it, for both regular queries as well as use of the Mongo aggregation facility
 
+[Download a jar for the current release (v1.0) here](https://github.com/EqualExperts/mongo-shell-like-query/blob/master/releases/1.0/mongo-shell-like-query.jar)
+
 #Example
 <pre><code>
     String query = ”db.users.find( { ‘name’ : ‘John’} )”;
@@ -56,31 +58,7 @@ ParameterName#DataType (supported datatypes are String|Boolean|Integer|Double|Ob
 
 #Usage
 
-1. Add dependency for mongo-shell-like-queries in your project
-
-   a) Add maven dependency
-
-   <pre><code>
-    &lt;dependencies>
-        &lt;dependency>
-            &lt;groupId>com.ee.mongo.util&lt;/groupId>
-            &lt;artifactId>mongo-shell-like-query&lt;/artifactId>
-            &lt;version>1.0-SNAPSHOT&lt;/version>
-        &lt;/dependency>
-    &lt;/dependencies>
-
-    &lt;repositories>
-        &lt;repository>
-            &lt;id>ee-nexus&lt;/id>
-            &lt;name>thirdparty&lt;/name>
-            &lt;url>http://49.248.27.91:9090/nexus/content/repositories/snapshots/&lt;/url>
-            &lt;snapshots>
-                &lt;enabled>true&lt;/enabled>
-            &lt;/snapshots>
-        &lt;/repository>
-    &lt;/repositories>
-
-  </code></pre> 
+1. Download the .jar file and add it to your project 
 
 2.Use library:
 
