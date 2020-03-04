@@ -39,14 +39,15 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
-            <version>2.10.1</version>
+            <version>3.2.2</version>
+            <!--<version>3.12.1</version>-->
         </dependency>
 
 
         <dependency>
             <groupId>org.mongodb</groupId>
-            <artifactId>casbah-core_2.10</artifactId>
-            <version>2.6.1</version>
+            <artifactId>casbah-core_2.12</artifactId>
+            <version>3.1.1</version>
         </dependency>
 
     </dependencies>
@@ -58,6 +59,7 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
+                <version>4.3.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -66,6 +68,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -84,6 +87,7 @@
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
                 <executions>
                     <execution>
                         <id>scala-compile-first</id>
