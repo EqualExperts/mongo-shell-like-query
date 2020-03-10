@@ -50,7 +50,7 @@ class MongoQuery(val queryTypes: List[Query], val collectionName: String) {
 
   protected def executeAggregate(aggregationQuery: AggregateQuery, collection: DBCollection): Array[DBObject] = {
     val aggregationPipeline = aggregationQuery.aggregationPipeline
-    var cursor = collection.aggregate(aggregationPipeline, AggregationOptions.builder().allowDiskUse(true).build())
+    var cursor = collection.aggregate(aggregationPipeline, AggregationOptions.builder().batchSize(100).allowDiskUse(true).build())
     cursor.toArray
   }
 
