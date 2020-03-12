@@ -2,9 +2,13 @@ package com.ee.dynamicmongoquery
 
 import org.specs2.mutable.Specification
 import com.mongodb.BasicDBObject
+
 import collection.JavaConversions._
 import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
+
+import scala.collection.immutable.SortedMap
+import scala.collection.mutable
 
 @RunWith(classOf[JUnitRunner])
 class QueryTest extends Specification {
@@ -62,22 +66,7 @@ class QueryTest extends Specification {
       val findQuery = FindQuery(query, lookup)
 
       //Then
-      val criteriaMap = Map("name" -> "leena", "rank" -> 5, "employed" -> true, "salary" -> 1000, "weight" -> 2.5)
-      findQuery.criteria === new BasicDBObject(criteriaMap)
-      findQuery.projection === new BasicDBObject()
-    }
-
-    "find query with params and datatypes" in {
-      //Given
-      val query: String = "{'name':'name#String', 'rank' : 'givenRank#Integer' , 'employed':'isEmployed#Boolean', 'salary':'sal#Long','weight' :'weight#Double'}"
-      val params: Map[String, String] = Map("name" -> "leena", "givenRank" -> "5", "isEmployed" -> "true", "sal" -> "1000", "weight" -> "2.5")
-      val lookup: PlaceholderLookup = new PlaceholderLookup(params)
-
-      //When
-      val findQuery = FindQuery(query, lookup)
-
-      //Then
-      val criteriaMap = Map("name" -> "leena", "rank" -> 5, "employed" -> true, "salary" -> 1000, "weight" -> 2.5)
+      val criteriaMap = mutable.LinkedHashMap("name" -> "leena", "rank" -> 5, "employed" -> true, "salary" -> 1000l, "weight" -> 2.5)
       findQuery.criteria === new BasicDBObject(criteriaMap)
       findQuery.projection === new BasicDBObject()
     }

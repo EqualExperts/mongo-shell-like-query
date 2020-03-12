@@ -78,5 +78,11 @@ class MongoQuery(val queryTypes: List[Query], val collectionName: String) {
       case _ => false
     }
   }
+  // Overriding toString method
+  override def toString() : String = {
+
+    return "[MongoQuery : " +  this.collectionName +
+      ", Types:  = " + this.queryTypes+"]";
+  }
 }
 
