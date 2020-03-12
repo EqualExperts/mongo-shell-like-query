@@ -13,7 +13,7 @@ class PlaceholderLookupTest extends Specification {
     val lookup: PlaceholderLookup = new PlaceholderLookup(params)
 
     val address = new BasicDBObject()
-    address.put("lane", 5)
+    address.put("lane", 5:Integer)
     address.put("city", "Pune")
     address.put("country", "country")
     address.put("zipcode", "zip#Integer")
@@ -23,10 +23,10 @@ class PlaceholderLookupTest extends Specification {
     person.put("dontreplace", "dontreplace#Long")
 
     val expectedAddress = new BasicDBObject()
-    expectedAddress.put("lane", 5)
+    expectedAddress.put("lane", 5:Integer)
     expectedAddress.put("city", "Pune")
     expectedAddress.put("country", "India")
-    expectedAddress.put("zipcode", 411037)
+    expectedAddress.put("zipcode", 411037:Integer)
     val expectedPerson = new BasicDBObject()
     expectedPerson.put("name", "leena")
     expectedPerson.put("address", address)

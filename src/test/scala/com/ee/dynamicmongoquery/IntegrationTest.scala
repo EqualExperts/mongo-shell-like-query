@@ -1,21 +1,22 @@
 package com.ee.dynamicmongoquery
 
-import com.mongodb.casbah.{MongoConnection, MongoCollection}
+import com.mongodb.casbah.{Imports, MongoClient, MongoCollection, MongoConnection}
 import com.mongodb.util.JSON
-import com.mongodb.{BasicDBList, BasicDBObject}
+import com.mongodb.{BasicDBList, BasicDBObject, DBCollection}
 import org.specs2.mutable.{BeforeAfter, Specification}
 import org.specs2.matcher.MatchResult
+import org.specs2.specification.BeforeAfterEach
 
 
-class IntegrationTest extends Specification {
+class IntegrationTest extends Specification with BeforeAfterEach  {
 
-  lazy val mongoConn = MongoConnection()
-  lazy val mongoDB = mongoConn("dynamic-query-test-db")
-  lazy val userCollection: MongoCollection = mongoDB("users")
+  lazy val mongoConn = MongoClient()
+  lazy val mongoDB = mongoConn.getDB("dynamic-query-test-db")
+  lazy val userCollection: DBCollection = mongoDB.getCollection("users")
 
   lazy val parser: MongoQueryParser = new MongoQueryParser()
+  sequential
 
-  implicit val myContext = new BeforeAfter {
 
     def clearCollections {
       userCollection.drop()
@@ -34,7 +35,6 @@ class IntegrationTest extends Specification {
     def after = {
       clearCollections
     }
-  }
 
 
   def readJsonFile(config: String): String = {

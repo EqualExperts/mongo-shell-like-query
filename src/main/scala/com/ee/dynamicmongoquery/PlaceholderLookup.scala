@@ -14,7 +14,7 @@ class PlaceholderLookup(params: Map[String, String]) {
         }
         case s: String => {
           val resolvedValue = placeholderResolver.resolve(s)
-          basicDBObject.put(key, resolvedValue)
+          basicDBObject.put(key, resolvedValue.asInstanceOf[AnyRef])
         }
         case _ => {
           basicDBObject.put(key, value)

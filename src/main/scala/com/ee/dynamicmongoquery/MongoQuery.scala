@@ -50,8 +50,8 @@ class MongoQuery(val queryTypes: List[Query], val collectionName: String) {
 
   protected def executeAggregate(aggregationQuery: AggregateQuery, collection: DBCollection): Array[DBObject] = {
     val aggregationPipeline = aggregationQuery.aggregationPipeline
-    var aggregateOP = collection.aggregate(aggregationPipeline.head, aggregationPipeline.tail: _*)
-    aggregateOP.results().toTraversable.toArray
+    var cursor = collection.aggregate(aggregationPipeline, AggregationOptions.builder().batchSize(100).allowDiskUse(true).build())
+    cursor.toArray
   }
 
 
@@ -77,6 +77,12 @@ class MongoQuery(val queryTypes: List[Query], val collectionName: String) {
       }
       case _ => false
     }
+  }
+  // Overriding toString method
+  override def toString() : String = {
+
+    return "[MongoQuery : " +  this.collectionName +
+      ", Types:  = " + this.queryTypes+"]";
   }
 }
 

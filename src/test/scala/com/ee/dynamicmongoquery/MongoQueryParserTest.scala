@@ -58,7 +58,7 @@ class MongoQueryParserTest extends Specification {
 
   "find query with params and datatypes" in {
     //Given
-    val query: String = "db.users.find({'name':'name#String', 'rank' : 'givenRank#Integer' , 'employed':'isEmployed#Boolean', 'salary':'sal#Long','weight' :'weight#Double'})"
+    val query: String = "db.users.find({'name':'name#String', 'rank' : 'givenRank#Integer' , 'employed':'isEmployed#Boolean', 'salary':'sal#Integer','weight' :'weight#Double'})"
     val params: Map[String, String] = Map("name" -> "leena", "givenRank" -> "5", "isEmployed" -> "true", "sal" -> "1000", "weight" -> "2.5")
     val lookup: PlaceholderLookup = new PlaceholderLookup(params)
 
@@ -151,7 +151,7 @@ class MongoQueryParserTest extends Specification {
 
   "aggregation query " in {
     //Given
-    val query: String = "db.users.aggregate([{'$match':{'salary' : {$gte:'from#Long',$lte:'to#Long'}}}, { $group: {_id:'$role', 'role': {$sum:  '$age' }  }  }, {  '$sort': {  'age': -1 } },   {  '$limit': 5 }])"
+    val query: String = "db.users.aggregate([{'$match':{'salary' : {$gte:'from#Integer',$lte:'to#Integer'}}}, { $group: {_id:'$role', 'role': {$sum:  '$age' }  }  }, {  '$sort': {  'age': -1 } },   {  '$limit': 5 }])"
     val params: Map[String, String] = Map("from"->"1000","to" -> "2000")
     val lookup: PlaceholderLookup = new PlaceholderLookup(params)
 
@@ -166,7 +166,7 @@ class MongoQueryParserTest extends Specification {
 
   "aggregation query without array " in {
     //Given
-    val query: String = "db.users.aggregate(  {  '$match':{'salary' : {$gte:'from#Long',$lte:'to#Long'}}}, { $group: {_id:'$role', 'role': {$sum:  '$age' }  }  }, {  '$sort': {  'age': -1 } },   {  '$limit': 5  }  )"
+    val query: String = "db.users.aggregate(  {  '$match':{'salary' : {$gte:'from#Integer',$lte:'to#Integer'}}}, { $group: {_id:'$role', 'role': {$sum:  '$age' }  }  }, {  '$sort': {  'age': -1 } },   {  '$limit': 5  }  )"
     val params: Map[String, String] = Map("from"->"1000","to" -> "2000")
     val lookup: PlaceholderLookup = new PlaceholderLookup(params)
 
